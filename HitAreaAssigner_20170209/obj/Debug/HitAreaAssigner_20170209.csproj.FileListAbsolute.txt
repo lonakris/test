@@ -8,3 +8,13 @@ C:\Users\Kris\Documents\Visual Studio 2015\Projects\csharp\TDUseminer2016\HitAre
 C:\Users\Kris\Documents\Visual Studio 2015\Projects\csharp\TDUseminer2016\HitAreaAssigner_20170209\HitAreaAssigner_20170209\obj\Debug\HitAreaAssigner_20170209.exe
 C:\Users\Kris\Documents\Visual Studio 2015\Projects\csharp\TDUseminer2016\HitAreaAssigner_20170209\HitAreaAssigner_20170209\obj\Debug\HitAreaAssigner_20170209.pdb
 C:\Users\Kris\Documents\Visual Studio 2015\Projects\csharp\TDUseminer2016\HitAreaAssigner_20170209\HitAreaAssigner_20170209\obj\Debug\HitAreaAssigner_20170209.Form2.resources
+C:\Users\Kris\Documents\Visual Studio 2017\Projects\HitAreaAssigner_20170209\HitAreaAssigner_20170209\bin\Debug\HitAreaAssigner_20170209.exe.config
+C:\Users\Kris\Documents\Visual Studio 2017\Projects\HitAreaAssigner_20170209\HitAreaAssigner_20170209\bin\Debug\HitAreaAssigner_20170209.exe
+C:\Users\Kris\Documents\Visual Studio 2017\Projects\HitAreaAssigner_20170209\HitAreaAssigner_20170209\bin\Debug\HitAreaAssigner_20170209.pdb
+C:\Users\Kris\Documents\Visual Studio 2017\Projects\HitAreaAssigner_20170209\HitAreaAssigner_20170209\obj\Debug\HitAreaAssigner_20170209.csprojResolveAssemblyReference.cache
+C:\Users\Kris\Documents\Visual Studio 2017\Projects\HitAreaAssigner_20170209\HitAreaAssigner_20170209\obj\Debug\HitAreaAssigner_20170209.Form1.resources
+C:\Users\Kris\Documents\Visual Studio 2017\Projects\HitAreaAssigner_20170209\HitAreaAssigner_20170209\obj\Debug\HitAreaAssigner_20170209.Form2.resources
+C:\Users\Kris\Documents\Visual Studio 2017\Projects\HitAreaAssigner_20170209\HitAreaAssigner_20170209\obj\Debug\HitAreaAssigner_20170209.Properties.Resources.resources
+C:\Users\Kris\Documents\Visual Studio 2017\Projects\HitAreaAssigner_20170209\HitAreaAssigner_20170209\obj\Debug\HitAreaAssigner_20170209.csproj.GenerateResource.Cache
+C:\Users\Kris\Documents\Visual Studio 2017\Projects\HitAreaAssigner_20170209\HitAreaAssigner_20170209\obj\Debug\HitAreaAssigner_20170209.exe
+C:\Users\Kris\Documents\Visual Studio 2017\Projects\HitAreaAssigner_20170209\HitAreaAssigner_20170209\obj\Debug\HitAreaAssigner_20170209.pdb

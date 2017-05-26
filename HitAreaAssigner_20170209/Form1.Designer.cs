@@ -31,7 +31,6 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.listView1 = new System.Windows.Forms.ListView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.AddBtn = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
@@ -41,6 +40,7 @@
             this.ConvertBtn = new System.Windows.Forms.Button();
             this.textBoxEx2 = new HitAreaAssigner_20170209.TextBoxEx();
             this.textBoxEx1 = new HitAreaAssigner_20170209.TextBoxEx();
+            this.bufferedListView1 = new HitAreaAssigner_20170209.BufferedListView();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -77,21 +77,6 @@
             this.label2.Size = new System.Drawing.Size(35, 12);
             this.label2.TabIndex = 2;
             this.label2.Text = "label2";
-            // 
-            // listView1
-            // 
-            this.listView1.FullRowSelect = true;
-            this.listView1.Location = new System.Drawing.Point(12, 207);
-            this.listView1.MultiSelect = false;
-            this.listView1.Name = "listView1";
-            this.listView1.OwnerDraw = true;
-            this.listView1.Size = new System.Drawing.Size(228, 135);
-            this.listView1.TabIndex = 4;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.Details;
-            this.listView1.DrawColumnHeader += new System.Windows.Forms.DrawListViewColumnHeaderEventHandler(this.listView1_DrawColumnHeader);
-            this.listView1.DrawSubItem += new System.Windows.Forms.DrawListViewSubItemEventHandler(this.listView1_DrawSubItem);
-            this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
             // 
             // panel1
             // 
@@ -193,12 +178,21 @@
             this.textBoxEx1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxEx1_KeyDown);
             this.textBoxEx1.Leave += new System.EventHandler(this.textBoxEx1_Leave);
             // 
+            // bufferedListView1
+            // 
+            this.bufferedListView1.Location = new System.Drawing.Point(12, 207);
+            this.bufferedListView1.Name = "bufferedListView1";
+            this.bufferedListView1.Size = new System.Drawing.Size(228, 135);
+            this.bufferedListView1.TabIndex = 15;
+            this.bufferedListView1.UseCompatibleStateImageBehavior = false;
+            // 
             // Form1
             // 
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(739, 354);
+            this.ClientSize = new System.Drawing.Size(739, 570);
+            this.Controls.Add(this.bufferedListView1);
             this.Controls.Add(this.ConvertBtn);
             this.Controls.Add(this.textBoxEx2);
             this.Controls.Add(this.checkBoxIsUseTag);
@@ -208,7 +202,6 @@
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.AddBtn);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.listView1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -229,7 +222,6 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button AddBtn;
         private System.Windows.Forms.ComboBox comboBox1;
@@ -239,6 +231,7 @@
         private TextBoxEx textBoxEx2;
         private System.Windows.Forms.CheckBox checkBoxIsUseTag;
         private System.Windows.Forms.Button ConvertBtn;
+        private BufferedListView bufferedListView1;
     }
 }
 

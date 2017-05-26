@@ -20,7 +20,7 @@ namespace HitAreaAssigner_20170209
         }
 
         //todo
-        //listview1をBufferedListViewに置き換え
+        //bufferedListView1をBufferedListViewに置き換え
         //tagによるareacolorの紐づけ(coloredit)
         //選択中のareaを若干白っぽく
         //情報をarea,tagのみに
@@ -280,7 +280,7 @@ namespace HitAreaAssigner_20170209
          
             areaList[targetImageData.nowFrame].SetLengthToIndexedNode(areaIndex, new Size(width, height));
             
-            listView1.Items[areaIndex].SubItems[1].Text =
+            bufferedListView1.Items[areaIndex].SubItems[1].Text =
                 areaList[targetImageData.nowFrame].getNode(areaIndex).area.ToString();
         }
 
@@ -412,15 +412,15 @@ namespace HitAreaAssigner_20170209
             textBoxEx1.Text = areaList[targetImageData.nowFrame].getNode(areaIndex).state.ToString();
             textBoxEx2.Text = areaList[targetImageData.nowFrame].getNode(areaIndex).tag;
 
-            listView1.View = View.Details;
-            listView1.Columns.Add("Number", 40);
-            listView1.Columns.Add("Area", 200);
-            listView1.HideSelection = false;
+            bufferedListView1.View = View.Details;
+            bufferedListView1.Columns.Add("Number", 40);
+            bufferedListView1.Columns.Add("Area", 200);
+            bufferedListView1.HideSelection = false;
             ListViewItem inputdata = new ListViewItem();
             inputdata.Text = areaIndex.ToString();
             inputdata.SubItems.Add(areaList[targetImageData.nowFrame].getNode(areaIndex).area.ToString());
-            listView1.Items.Add(inputdata);
-            listView1.Items[0].Selected = true;
+            bufferedListView1.Items.Add(inputdata);
+            bufferedListView1.Items[0].Selected = true;
 
             //PictureBox addPictureBox = new PictureBox();
             layer.Location = new Point(0, 0);
@@ -462,22 +462,22 @@ namespace HitAreaAssigner_20170209
             if(targetImageData!=null)
             {
                 areaList[targetImageData.nowFrame].AddAfterIndex(areaIndex);
-                listView1.Items[areaIndex].Selected = false;
+                bufferedListView1.Items[areaIndex].Selected = false;
                 areaIndex++;
                 ListViewItem inputdata = new ListViewItem();
 
                 //仮データをlistviewに入れる
                 inputdata.Text = areaIndex.ToString();
                 inputdata.SubItems.Add("");
-                listView1.Items.Add(inputdata);
+                bufferedListView1.Items.Add(inputdata);
 
-                for (int i = 0; i < listView1.Items.Count; i++)
+                for (int i = 0; i < bufferedListView1.Items.Count; i++)
                 {
-                    listView1.Items[i].Text = i.ToString();
-                    listView1.Items[i].SubItems[1].Text = areaList[targetImageData.nowFrame].getNode(i).area.ToString();
+                    bufferedListView1.Items[i].Text = i.ToString();
+                    bufferedListView1.Items[i].SubItems[1].Text = areaList[targetImageData.nowFrame].getNode(i).area.ToString();
                 }
 
-                listView1.Items[areaIndex].Selected = true;
+                bufferedListView1.Items[areaIndex].Selected = true;
             }
             
         }
@@ -487,7 +487,7 @@ namespace HitAreaAssigner_20170209
             if (areaList == null) return;
             
             targetImageData.nowFrame = comboBox1.SelectedIndex;
-            listView1.Items.Clear();
+            bufferedListView1.Items.Clear();
 
             areaIndex = 0;
             for (int i = 0; i < areaList[targetImageData.nowFrame].Count; i++)
@@ -495,10 +495,10 @@ namespace HitAreaAssigner_20170209
                 ListViewItem inputdata = new ListViewItem();
                 inputdata.Text = areaIndex.ToString();
                 inputdata.SubItems.Add(areaList[targetImageData.nowFrame].getNode(i).area.ToString());
-                listView1.Items.Add(inputdata);
+                bufferedListView1.Items.Add(inputdata);
             }    
             
-            listView1.Items[0].Selected = true;
+            bufferedListView1.Items[0].Selected = true;
             pictureBox1.Invalidate();
             layer.Invalidate();
         }
@@ -539,7 +539,7 @@ namespace HitAreaAssigner_20170209
                 {
 
                 }
-                listView1.Focus();
+                bufferedListView1.Focus();
             }
             
         }
@@ -567,7 +567,7 @@ namespace HitAreaAssigner_20170209
                 {
 
                 }
-                listView1.Focus();
+                bufferedListView1.Focus();
             }
 
         }
@@ -580,14 +580,14 @@ namespace HitAreaAssigner_20170209
             areaList[targetImageData.nowFrame].Remove(areaIndex);
 
             //listview
-            listView1.Items.RemoveAt(areaIndex);
+            bufferedListView1.Items.RemoveAt(areaIndex);
             for(int index = 0; index+areaIndex < areaList[targetImageData.nowFrame].Count; index++)
             {
-                listView1.Items[index + areaIndex].Text = (index + areaIndex).ToString();
+                bufferedListView1.Items[index + areaIndex].Text = (index + areaIndex).ToString();
             }
 
             if(areaIndex > 0)areaIndex--;
-            listView1.Items[areaIndex].Selected = true;
+            bufferedListView1.Items[areaIndex].Selected = true;
 
             layer.Invalidate();
         }
