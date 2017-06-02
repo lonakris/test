@@ -183,6 +183,7 @@
             // 
             // bufferedListView1
             // 
+            this.bufferedListView1.FullRowSelect = true;
             this.bufferedListView1.Location = new System.Drawing.Point(12, 219);
             this.bufferedListView1.Name = "bufferedListView1";
             this.bufferedListView1.Size = new System.Drawing.Size(228, 141);
