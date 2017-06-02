@@ -49,6 +49,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AreaManager.cs" />
+    <Compile Include="AreaTabsControl.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="BufferedListView.cs">
       <SubType>Component</SubType>
     </Compile>

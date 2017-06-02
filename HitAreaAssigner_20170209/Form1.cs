@@ -44,8 +44,8 @@ namespace HitAreaAssigner_20170209
         {
             get
             {
-                int posX = pictureBox1.PointToClient(System.Windows.Forms.Cursor.Position).X / worldScale;
-                int posY = pictureBox1.PointToClient(System.Windows.Forms.Cursor.Position).Y / worldScale;
+                int posX = AreaPictureBox.PointToClient(System.Windows.Forms.Cursor.Position).X / worldScale;
+                int posY = AreaPictureBox.PointToClient(System.Windows.Forms.Cursor.Position).Y / worldScale;
                 return new Point(posX, posY);
             }
         }
@@ -62,23 +62,23 @@ namespace HitAreaAssigner_20170209
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            panel1.Controls.Add(pictureBox1);
+            AreaPanel.Controls.Add(AreaPictureBox);
 
-            pictureBox1.AllowDrop = true;
+            AreaPictureBox.AllowDrop = true;
 
             targetImageData = null;
 
-            pictureBox1.MouseWheel += PictureBox1_MouseWheel;
-            panel1.MouseWheel += Panel1_MouseWheel;
+            AreaPictureBox.MouseWheel += PictureBox1_MouseWheel;
+            AreaPanel.MouseWheel += Panel1_MouseWheel;
 
             //areaList = new AreaManager();
 
             LayerInfoInitialize();
 
-            checkBoxIsUseState.Enabled = false;
-            checkBoxIsUseTag.Enabled = false;
-            textBoxEx1.Enabled = false;
-            textBoxEx2.Enabled = false;
+            CheckBoxIsUseState.Enabled = false;
+            CheckBoxIsUseTag.Enabled = false;
+            TextBoxforState.Enabled = false;
+            TextBoxforTag.Enabled = false;
 
             orderCode = OrderCodeName.NONE;
             worldScale = 1;
@@ -95,8 +95,8 @@ namespace HitAreaAssigner_20170209
             layer.Paint += Layer_Paint;
             layer.Enabled = true;
 
-            panel1.Controls.Add(layer);
-            layer.Parent = pictureBox1;
+            AreaPanel.Controls.Add(layer);
+            layer.Parent = AreaPictureBox;
             layer.BringToFront();
             layer.BackColor = Color.Transparent;
         }
@@ -162,14 +162,14 @@ namespace HitAreaAssigner_20170209
                 = new Point(LocatedPointInpictureBox1.X - targetImageData.drawPosX,
                             LocatedPointInpictureBox1.Y - targetImageData.drawPosY);
 
-            label1.Text = cursolLocation.ToString();
+            AreaLblCarsorPos.Text = cursolLocation.ToString();
 
             switch (orderCode)
             {
                 case OrderCodeName.NONE: break;
                 case OrderCodeName.DRAWRECTANGLE: DrawRectangle(); break;
             }
-            pictureBox1.Invalidate();
+            AreaPictureBox.Invalidate();
             layer.Invalidate();
             HasLocatedPointInpictureBox1 = LocatedPointInpictureBox1;
         }
@@ -183,12 +183,12 @@ namespace HitAreaAssigner_20170209
                 
                 int oldWorldScale = worldScale;
                 worldScale = a / 120 + 1;
-                label2.Text = "Scale: x"+worldScale.ToString();
+                AreaLblimageScale.Text = "Scale: x"+worldScale.ToString();
 
-                pictureBox1.Size = new Size(pictureBox1.Width * worldScale / oldWorldScale,
-                                            pictureBox1.Height * worldScale / oldWorldScale);
+                AreaPictureBox.Size = new Size(AreaPictureBox.Width * worldScale / oldWorldScale,
+                                            AreaPictureBox.Height * worldScale / oldWorldScale);
 
-                layer.Size = pictureBox1.Size;
+                layer.Size = AreaPictureBox.Size;
 
                 int denominator, numerator;
 
@@ -204,11 +204,11 @@ namespace HitAreaAssigner_20170209
                     else numerator = denominator / 2;
                 }
 
-                panel1.AutoScrollPosition
-                    = new Point(pictureBox1.Width / denominator * numerator,
-                                pictureBox1.Height / denominator * numerator);
+                AreaPanel.AutoScrollPosition
+                    = new Point(AreaPictureBox.Width / denominator * numerator,
+                                AreaPictureBox.Height / denominator * numerator);
 
-                pictureBox1.Invalidate();
+                AreaPictureBox.Invalidate();
                 layer.Invalidate();
             }
         }
@@ -259,14 +259,14 @@ namespace HitAreaAssigner_20170209
                 = new Point(LocatedPointInpictureBox1.X - targetImageData.drawPosX,
                             LocatedPointInpictureBox1.Y - targetImageData.drawPosY);
 
-            label1.Text = cursolLocation.ToString();
+            AreaLblCarsorPos.Text = cursolLocation.ToString();
 
             switch (orderCode)
             {
                 case OrderCodeName.NONE: break;
                 case OrderCodeName.DRAWRECTANGLE: DrawRectangle(); break;
             }
-            pictureBox1.Invalidate();
+            AreaPictureBox.Invalidate();
             HasLocatedPointInpictureBox1 = LocatedPointInpictureBox1;
         }
 
@@ -280,7 +280,7 @@ namespace HitAreaAssigner_20170209
          
             areaList[targetImageData.nowFrame].SetLengthToIndexedNode(areaIndex, new Size(width, height));
             
-            bufferedListView1.Items[areaIndex].SubItems[1].Text =
+            AreaListView.Items[areaIndex].SubItems[1].Text =
                 areaList[targetImageData.nowFrame].getNode(areaIndex).area.ToString();
         }
 
@@ -382,17 +382,17 @@ namespace HitAreaAssigner_20170209
 
         void Setting(Image image, int frames)
         {
-            pictureBox1.Location = new Point(0, 0);
-            pictureBox1.Size = panel1.Size;
+            AreaPictureBox.Location = new Point(0, 0);
+            AreaPictureBox.Size = AreaPanel.Size;
 
-            pictureBox1.BackColor = Color.DeepSkyBlue;
+            AreaPictureBox.BackColor = Color.DeepSkyBlue;
 
-            targetImageData = new ImageData(image, frames, pictureBox1.Size);
+            targetImageData = new ImageData(image, frames, AreaPictureBox.Size);
 
             for(int frameNum = 0; frameNum < frames; frameNum++)
-                comboBox1.Items.Add((frameNum+1).ToString());
+                AreaComboBox.Items.Add((frameNum+1).ToString());
 
-            comboBox1.SelectedIndex = 0;
+            AreaComboBox.SelectedIndex = 0;
 
             worldScale = 1;
 
@@ -405,28 +405,30 @@ namespace HitAreaAssigner_20170209
             
             areaIndex = 0;
 
-            checkBoxIsUseState.Enabled = true;
-            checkBoxIsUseTag.Enabled = true;
+            CheckBoxIsUseState.Enabled = true;
+            CheckBoxIsUseTag.Enabled = true;
 
-            textBoxEx1.Text = areaList[targetImageData.nowFrame].getNode(areaIndex).state.ToString();
-            textBoxEx2.Text = areaList[targetImageData.nowFrame].getNode(areaIndex).tag;
+            TextBoxforState.Text = areaList[targetImageData.nowFrame].getNode(areaIndex).state.ToString();
+            TextBoxforTag.Text = areaList[targetImageData.nowFrame].getNode(areaIndex).tag;
 
-            bufferedListView1.View = View.Details;
-            bufferedListView1.Columns.Add("Number", 40);
-            bufferedListView1.Columns.Add("Area", 200);
-            bufferedListView1.HideSelection = false;
+            AreaListView.View = View.Details;
+            AreaListView.Columns.Add("Number", 40);
+            AreaListView.Columns.Add("Area", 200);
+            AreaListView.HideSelection = false;
             ListViewItem inputdata = new ListViewItem();
             inputdata.Text = areaIndex.ToString();
             inputdata.SubItems.Add(areaList[targetImageData.nowFrame].getNode(areaIndex).area.ToString());
-            bufferedListView1.Items.Add(inputdata);
-            bufferedListView1.Items[0].Selected = true;
+            AreaListView.Items.Add(inputdata);
+            AreaListView.Items[0].Selected = true;
 
             //PictureBox addPictureBox = new PictureBox();
             layer.Location = new Point(0, 0);
-            layer.Size = pictureBox1.Size;
+            layer.Size = AreaPictureBox.Size;
 
-            pictureBox1.Invalidate();
+            AreaPictureBox.Invalidate();
             layer.Invalidate();
+
+            AreaLblCarsorPos.Text = AreaPanel.Size.ToString();
         }
 
         void LoadAndSetting(DragEventArgs e)
@@ -461,23 +463,23 @@ namespace HitAreaAssigner_20170209
             if(targetImageData!=null)
             {
                 areaList[targetImageData.nowFrame].AddAfterIndex(areaIndex);
-                bufferedListView1.Items[areaIndex].Selected = false;
+                AreaListView.Items[areaIndex].Selected = false;
                 areaIndex++;
                 ListViewItem inputdata = new ListViewItem();
 
                 //仮データをlistviewに入れる
                 inputdata.Text = areaIndex.ToString();
                 inputdata.SubItems.Add("");
-                bufferedListView1.Items.Add(inputdata);
+                AreaListView.Items.Add(inputdata);
 
-                for (int i = 0; i < bufferedListView1.Items.Count; i++)
+                for (int i = 0; i < AreaListView.Items.Count; i++)
                 {
-                    bufferedListView1.Items[i].Text = i.ToString();
-                    bufferedListView1.Items[i].SubItems[1].Text
+                    AreaListView.Items[i].Text = i.ToString();
+                    AreaListView.Items[i].SubItems[1].Text
                         = areaList[targetImageData.nowFrame].getNode(i).area.ToString();
                 }
 
-                bufferedListView1.Items[areaIndex].Selected = true;
+                AreaListView.Items[areaIndex].Selected = true;
             }
             
         }
@@ -486,8 +488,8 @@ namespace HitAreaAssigner_20170209
         {
             if (areaList == null) return;
             
-            targetImageData.nowFrame = comboBox1.SelectedIndex;
-            bufferedListView1.Items.Clear();
+            targetImageData.nowFrame = AreaComboBox.SelectedIndex;
+            AreaListView.Items.Clear();
 
             areaIndex = 0;
             for (int i = 0; i < areaList[targetImageData.nowFrame].Count; i++)
@@ -495,34 +497,32 @@ namespace HitAreaAssigner_20170209
                 ListViewItem inputdata = new ListViewItem();
                 inputdata.Text = areaIndex.ToString();
                 inputdata.SubItems.Add(areaList[targetImageData.nowFrame].getNode(i).area.ToString());
-                bufferedListView1.Items.Add(inputdata);
+                AreaListView.Items.Add(inputdata);
             }    
             
-            bufferedListView1.Items[0].Selected = true;
-            pictureBox1.Invalidate();
+            AreaListView.Items[0].Selected = true;
+            AreaPictureBox.Invalidate();
             layer.Invalidate();
         }
 
-        
-
         private void checkBoxIsUseState_CheckedChanged(object sender, EventArgs e)
         {
-            textBoxEx1.Enabled = checkBoxIsUseState.Checked;
+            TextBoxforState.Enabled = CheckBoxIsUseState.Checked;
         }
 
         private void checkBoxIsUseTag_CheckedChanged(object sender, EventArgs e)
         {
-            textBoxEx2.Enabled = checkBoxIsUseTag.Checked;
+            TextBoxforTag.Enabled = CheckBoxIsUseTag.Checked;
         }
 
         private void textBoxEx1_Enter(object sender, EventArgs e)
         {
-            textBoxEx1.tempState = areaList[targetImageData.nowFrame].getNode(areaIndex).state;
+            TextBoxforState.tempState = areaList[targetImageData.nowFrame].getNode(areaIndex).state;
         }
 
         private void textBoxEx1_Leave(object sender, EventArgs e)
         {
-            textBoxEx1.Text = textBoxEx1.tempState.ToString();
+            TextBoxforState.Text = TextBoxforState.tempState.ToString();
         }
 
         private void textBoxEx1_KeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
@@ -532,26 +532,26 @@ namespace HitAreaAssigner_20170209
                 try
                 {
                     areaList[targetImageData.nowFrame].getNode(areaIndex).state =
-                        Convert.ToInt32(textBoxEx1.Text);
-                    textBoxEx1.tempState = areaList[targetImageData.nowFrame].getNode(areaIndex).state;
+                        Convert.ToInt32(TextBoxforState.Text);
+                    TextBoxforState.tempState = areaList[targetImageData.nowFrame].getNode(areaIndex).state;
                 }
                 catch
                 {
 
                 }
-                bufferedListView1.Focus();
+                AreaListView.Focus();
             }
             
         }
 
         private void textBoxEx2_Enter(object sender, EventArgs e)
         {
-            textBoxEx2.tempTag = areaList[targetImageData.nowFrame].getNode(areaIndex).tag;
+            TextBoxforTag.tempTag = areaList[targetImageData.nowFrame].getNode(areaIndex).tag;
         }
 
         private void textBoxEx2_Leave(object sender, EventArgs e)
         {
-            textBoxEx2.Text = textBoxEx2.tempTag;
+            TextBoxforTag.Text = TextBoxforTag.tempTag;
         }
 
         private void textBoxEx2_KeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
@@ -560,14 +560,14 @@ namespace HitAreaAssigner_20170209
             {
                 try
                 {
-                    areaList[targetImageData.nowFrame].getNode(areaIndex).tag =textBoxEx2.Text;
-                    textBoxEx2.tempTag = areaList[targetImageData.nowFrame].getNode(areaIndex).tag;
+                    areaList[targetImageData.nowFrame].getNode(areaIndex).tag =TextBoxforTag.Text;
+                    TextBoxforTag.tempTag = areaList[targetImageData.nowFrame].getNode(areaIndex).tag;
                 }
                 catch
                 {
 
                 }
-                bufferedListView1.Focus();
+                AreaListView.Focus();
             }
 
         }
@@ -580,14 +580,14 @@ namespace HitAreaAssigner_20170209
             areaList[targetImageData.nowFrame].Remove(areaIndex);
 
             //listview
-            bufferedListView1.Items.RemoveAt(areaIndex);
+            AreaListView.Items.RemoveAt(areaIndex);
             for(int index = 0; index+areaIndex < areaList[targetImageData.nowFrame].Count; index++)
             {
-                bufferedListView1.Items[index + areaIndex].Text = (index + areaIndex).ToString();
+                AreaListView.Items[index + areaIndex].Text = (index + areaIndex).ToString();
             }
 
             if(areaIndex > 0)areaIndex--;
-            bufferedListView1.Items[areaIndex].Selected = true;
+            AreaListView.Items[areaIndex].Selected = true;
 
             layer.Invalidate();
         }
@@ -614,14 +614,12 @@ namespace HitAreaAssigner_20170209
                 if(sfd.FileName.LastIndexOf(".csv")>-1)
                 {
                     FileConverter fc = new FileConverter();
-                    fc.ConvertToCSV(sfd.FileName, areaList, checkBoxIsUseState.Checked, checkBoxIsUseTag.Checked);
+                    fc.ConvertToCSV(sfd.FileName, areaList, CheckBoxIsUseState.Checked, CheckBoxIsUseTag.Checked);
                 }
                 
             }
             
         }
-
-        
     }
 
 }

@@ -15,26 +15,26 @@ namespace HitAreaAssigner_20170209
     // partialの試用
     public partial class Form1 : Form
     {
-        private void bufferedListView1_SelectedIndexChanged(object sender, EventArgs e)
+        private void AreaListView_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (bufferedListView1.SelectedItems.Count > 0)
+            if (AreaListView.SelectedItems.Count > 0)
             {
-                if (areaIndex == bufferedListView1.SelectedItems[0].Index) return;
+                if (areaIndex == AreaListView.SelectedItems[0].Index) return;
 
-                bufferedListView1.Items[areaIndex].Selected = false;
-                areaIndex = bufferedListView1.SelectedItems[0].Index;
-                bufferedListView1.Items[areaIndex].Selected = true;
+                AreaListView.Items[areaIndex].Selected = false;
+                areaIndex = AreaListView.SelectedItems[0].Index;
+                AreaListView.Items[areaIndex].Selected = true;
             }
         }
 
-        private void bufferedListView1_DrawSubItem(object sender, DrawListViewSubItemEventArgs e)
+        private void AreaListView_DrawSubItem(object sender, DrawListViewSubItemEventArgs e)
         {
             //DrawSubItemEventを使う場合、DrawItemEventもあると描画に誤作動が生じる
 
-            if (bufferedListView1.Items[e.ItemIndex].Selected)
+            if (AreaListView.Items[e.ItemIndex].Selected)
             {
                 e.Graphics.FillRectangle(Brushes.Crimson, e.Bounds);
-                areaIndex = bufferedListView1.SelectedItems[0].Index;
+                areaIndex = AreaListView.SelectedItems[0].Index;
                 e.Graphics.DrawString(
                         e.SubItem.Text,
                         e.Item.Font,
@@ -51,7 +51,7 @@ namespace HitAreaAssigner_20170209
             }
         }
 
-        private void bufferedListView1_DrawColumnHeader(object sender, DrawListViewColumnHeaderEventArgs e)
+        private void AreaListView_DrawColumnHeader(object sender, DrawListViewColumnHeaderEventArgs e)
         {
             e.DrawDefault = true;
         }
