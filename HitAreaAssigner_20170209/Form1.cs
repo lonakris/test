@@ -311,7 +311,6 @@ namespace HitAreaAssigner_20170209
         {
             if(e.Button.HasFlag(MouseButtons.Left))
             {
-                
                 if(targetImageData != null)
                 {
                     if (IsDrawRectangle)
@@ -474,7 +473,8 @@ namespace HitAreaAssigner_20170209
                 for (int i = 0; i < bufferedListView1.Items.Count; i++)
                 {
                     bufferedListView1.Items[i].Text = i.ToString();
-                    bufferedListView1.Items[i].SubItems[1].Text = areaList[targetImageData.nowFrame].getNode(i).area.ToString();
+                    bufferedListView1.Items[i].SubItems[1].Text
+                        = areaList[targetImageData.nowFrame].getNode(i).area.ToString();
                 }
 
                 bufferedListView1.Items[areaIndex].Selected = true;
@@ -620,6 +620,8 @@ namespace HitAreaAssigner_20170209
             }
             
         }
+
+        
     }
 
 }

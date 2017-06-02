@@ -41,6 +41,8 @@
             this.textBoxEx2 = new HitAreaAssigner_20170209.TextBoxEx();
             this.textBoxEx1 = new HitAreaAssigner_20170209.TextBoxEx();
             this.bufferedListView1 = new HitAreaAssigner_20170209.BufferedListView();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -63,7 +65,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(10, 12);
+            this.label1.Location = new System.Drawing.Point(10, 15);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(35, 12);
             this.label1.TabIndex = 1;
@@ -83,8 +85,9 @@
             this.panel1.AllowDrop = true;
             this.panel1.AutoScroll = true;
             this.panel1.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Location = new System.Drawing.Point(367, 12);
+            this.panel1.Location = new System.Drawing.Point(373, 30);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(360, 330);
             this.panel1.TabIndex = 5;
@@ -104,7 +107,7 @@
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(119, 12);
+            this.comboBox1.Location = new System.Drawing.Point(119, 15);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 20);
             this.comboBox1.TabIndex = 8;
@@ -180,18 +183,42 @@
             // 
             // bufferedListView1
             // 
-            this.bufferedListView1.Location = new System.Drawing.Point(12, 207);
+            this.bufferedListView1.Location = new System.Drawing.Point(12, 219);
             this.bufferedListView1.Name = "bufferedListView1";
-            this.bufferedListView1.Size = new System.Drawing.Size(228, 135);
+            this.bufferedListView1.Size = new System.Drawing.Size(228, 141);
             this.bufferedListView1.TabIndex = 15;
             this.bufferedListView1.UseCompatibleStateImageBehavior = false;
+            this.bufferedListView1.DrawColumnHeader += new System.Windows.Forms.DrawListViewColumnHeaderEventHandler(this.bufferedListView1_DrawColumnHeader);
+            this.bufferedListView1.DrawSubItem += new System.Windows.Forms.DrawListViewSubItemEventHandler(this.bufferedListView1_DrawSubItem);
+            this.bufferedListView1.SelectedIndexChanged += new System.EventHandler(this.bufferedListView1_SelectedIndexChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(12, 204);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(48, 12);
+            this.label3.TabIndex = 16;
+            this.label3.Text = "AreaList";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(371, 15);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(61, 12);
+            this.label4.TabIndex = 17;
+            this.label4.Text = "WorkSpace";
             // 
             // Form1
             // 
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(739, 570);
+            this.ClientSize = new System.Drawing.Size(745, 371);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.bufferedListView1);
             this.Controls.Add(this.ConvertBtn);
             this.Controls.Add(this.textBoxEx2);
@@ -201,7 +228,6 @@
             this.Controls.Add(this.RemoveBtn);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.AddBtn);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -232,6 +258,8 @@
         private System.Windows.Forms.CheckBox checkBoxIsUseTag;
         private System.Windows.Forms.Button ConvertBtn;
         private BufferedListView bufferedListView1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
     }
 }
 

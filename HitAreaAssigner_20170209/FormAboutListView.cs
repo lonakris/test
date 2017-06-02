@@ -15,28 +15,26 @@ namespace HitAreaAssigner_20170209
     // partialの試用
     public partial class Form1 : Form
     {
-        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        private void bufferedListView1_SelectedIndexChanged(object sender, EventArgs e)
         {
-
-            if (listView1.SelectedItems.Count > 0)
+            if (bufferedListView1.SelectedItems.Count > 0)
             {
-                if (areaIndex == listView1.SelectedItems[0].Index) return;
+                if (areaIndex == bufferedListView1.SelectedItems[0].Index) return;
 
-                listView1.Items[areaIndex].Selected = false;
-                areaIndex = listView1.SelectedItems[0].Index;
-                listView1.Items[areaIndex].Selected = true;
+                bufferedListView1.Items[areaIndex].Selected = false;
+                areaIndex = bufferedListView1.SelectedItems[0].Index;
+                bufferedListView1.Items[areaIndex].Selected = true;
             }
-
         }
 
-        private void listView1_DrawSubItem(object sender, DrawListViewSubItemEventArgs e)
+        private void bufferedListView1_DrawSubItem(object sender, DrawListViewSubItemEventArgs e)
         {
             //DrawSubItemEventを使う場合、DrawItemEventもあると描画に誤作動が生じる
 
-            if (listView1.Items[e.ItemIndex].Selected)
+            if (bufferedListView1.Items[e.ItemIndex].Selected)
             {
                 e.Graphics.FillRectangle(Brushes.Crimson, e.Bounds);
-                areaIndex = listView1.SelectedItems[0].Index;
+                areaIndex = bufferedListView1.SelectedItems[0].Index;
                 e.Graphics.DrawString(
                         e.SubItem.Text,
                         e.Item.Font,
@@ -53,7 +51,7 @@ namespace HitAreaAssigner_20170209
             }
         }
 
-        private void listView1_DrawColumnHeader(object sender, DrawListViewColumnHeaderEventArgs e)
+        private void bufferedListView1_DrawColumnHeader(object sender, DrawListViewColumnHeaderEventArgs e)
         {
             e.DrawDefault = true;
         }
